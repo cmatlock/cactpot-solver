@@ -1,12 +1,14 @@
-import React, { useState, BaseSyntheticEvent } from 'react';
+import React, { useState } from 'react';
 import ScratchOff from './ScratchOff';
 import EstimatedResult from './EstimatedResult';
 
 function Board(){
   const [scratchOffs, setScratchOffs] = useState(Array(9).fill('0'));
 
-  function handleChange(e:BaseSyntheticEvent){
-    console.log(e.target.value);
+  function handleChange(e:string, i:number){
+    let scratchOffsCopy = scratchOffs.slice(); // deep copy
+    scratchOffsCopy[i] = e;
+    setScratchOffs(scratchOffsCopy);
   }
 
   function renderScratchOff(i: number){
@@ -14,6 +16,7 @@ function Board(){
       <ScratchOff 
         handleChange={handleChange}
         revealed={scratchOffs[i]}
+        id={i}
       />
     )
   }

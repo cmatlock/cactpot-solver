@@ -1,15 +1,20 @@
-import React, { BaseSyntheticEvent } from 'react';
+import React from 'react';
 
 type MyProps = {
-  handleChange(e: BaseSyntheticEvent): void;
+  handleChange(e: string, i: number): void;
   revealed: string;
+  id: number;
 }
 
 function ScratchOff(props: MyProps){
 
   return (
     <div className='scratch-off cell'>
-      <select value={props.revealed} onChange={props.handleChange}>
+      <select
+      value={props.revealed}
+      onChange={(e) => {
+        props.handleChange(e.target.value, props.id)
+      }}>
         <option value='0'>-</option>
         <option value='1'>1</option>
         <option value='2'>2</option>
