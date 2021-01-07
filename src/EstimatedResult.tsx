@@ -1,14 +1,17 @@
 import React from 'react';
 
-class EstimatedResult extends React.Component{
+type MyProps = {
+  sum: number
+}
+
+function EstimatedResult(props: MyProps){
   // each restimated result tracks the state of a particular row of cells
-  render(){
-    return (
-      <div className='estimated-result cell'>
-        {/*educated guess*/}
-      </div>
-    )
-  }
+
+  return (
+    <div className='estimated-result cell'>
+      {props.sum}
+    </div>
+  )
 }
 
 export default EstimatedResult;
